@@ -1,38 +1,36 @@
-enum RPS {
-    Rock = 1
-    Paper = 2
-    Scissor = 3
+class Item {
+    [byte]$worth
+    [char[]]$Encryption
+    [string]$Name
 }
 
-class Key {
-    [RPS]$Value
-    [char[]]$Names
+$Rock = [Item]@{
+    worth      = 1
+    Encryption = 'A', 'X'
+    Name       = 'Rock'
 }
 
-$Rock = [Key]@{
-    $Value = [RPS]::Rock
-    $Names = 'A','X'
+$Paper = [Item]@{
+    worth      = 2
+    Encryption = 'B', 'Y'
+    Name       = 'Paper'
 }
 
-$Paper = [Key]@{
-    $Value = [RPS]::Paper
-    $Names = 'B','Y'
-}
-
-$Scissor = [Key]@{
-    $Value = [RPS]::Scissor
-    $Names = 'C','Z'
+$Scissor = [Item]@{
+    worth      = 3
+    Encryption = 'C', 'Z'
+    Name       = 'Scissor'
 }
 
 function Fight {
     [CmdletBinding()]
     param (
-        $Player,
-        $Opponent
+        [Item]$Player,
+        [Item]$Opponent
     )
 
-    if ($Player.Value -eq $Opponent.Value ) {
-        $points = $Player.Value + 3
+    if ($Player.Name -eq $Opponent.Name ) {
+        $points = $Player.worth + 3
         $points
     }
 }
