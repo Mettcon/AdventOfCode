@@ -29,9 +29,32 @@ function Fight {
         [Item]$Opponent
     )
 
-    if ($Player.Name -eq $Opponent.Name ) {
-        $points = $Player.worth + 3
-        $points
+    switch ($Player.Name) {
+        $Opponent.Name {
+            $points = $Player.worth + 3
+            $points 
+        }
+
+        'Rock' {
+            switch ($Opponent.Name) {
+                'Paper' {  }
+                'Scissor' {}
+            }
+        }
+
+        'Paper' {
+            switch ($Opponent.Name) {
+                'Rock' {  }
+                'Scissor' {}
+            }
+        }
+        
+        'Scissor' {
+            switch ($Opponent.Name) {
+                'Rock' {}
+                'Paper' {}
+            }
+        }
     }
 }
 
